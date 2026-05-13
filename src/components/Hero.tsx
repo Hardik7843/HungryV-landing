@@ -1,7 +1,5 @@
 "use client";
 
-import { ArrowBigDownIcon, ArrowDown } from "lucide-react";
-
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 py-12">
