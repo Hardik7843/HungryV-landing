@@ -2,64 +2,64 @@ import { FeatureBox } from "./FeatureBox";
 
 const features = [
   {
-    icon: "🤝",
-    title: "Stronger Customer Relationships",
+    icon: "📱",
+    title: "Smart QR Ordering",
     description:
-      "Collect data on loyal customers, understand their preferences, and create long-lasting connections.",
+      "Customers can instantly scan QR codes placed on restaurant tables to access digital menus and place orders directly from their devices.",
     gradient: "from-yellow-500/20 to-orange-500/20",
   },
   {
-    icon: "🍽️",
-    title: "Curated Food Categories",
+    icon: "⏱️",
+    title: "Real-Time Order Tracking",
     description:
-      "Easily organize your menu into custom categories, making browsing and ordering effortless for users.",
+      "Track food orders live from preparation to serving with instant updates for both customers and restaurant staff.",
     gradient: "from-pink-500/20 to-rose-500/20",
   },
   {
-    icon: "📊",
-    title: "Smart Analytics",
+    icon: "📋",
+    title: "Digital Restaurant Menus",
     description:
-      "Gain insights into customer behavior, track top-selling dishes, and make data-driven decisions with ease.",
+      "Manage menus digitally with easy updates for pricing, categories, and food availability.",
     gradient: "from-purple-500/20 to-pink-500/20",
   },
   {
-    icon: "🛒",
-    title: "Online & Offline Bookings",
+    icon: "🪑",
+    title: "Table Occupancy Management",
     description:
-      "Seamlessly manage food orders and reservations across both online and offline channels in one place.",
+      "Restaurant staff can monitor table occupancy and manage customer flow more efficiently.",
     gradient: "from-blue-500/20 to-cyan-500/20",
   },
   {
-    icon: "🎯",
-    title: "Targeted Marketing",
+    icon: "💻",
+    title: "Staff Dashboard",
     description:
-      "Engage frequent visitors with personalized campaigns and promotions to boost repeat sales.",
+      "A centralized dashboard allows restaurant staff to handle orders, track activity, and manage operations in real time.",
     gradient: "from-green-500/20 to-emerald-500/20",
   },
   {
-    icon: "⭐",
-    title: "Customer Reviews & Feedback",
+    icon: "🔒",
+    title: "Secure Authentication",
     description:
-      "Build trust and improve your service with genuine reviews, ratings, and comments from your customers.",
+      "Users can securely sign in using Google authentication or email and password authentication.",
     gradient: "from-indigo-500/20 to-purple-500/20",
   },
 ];
 
 export function FeatureSection() {
   return (
-    <section className="py-20 px-6 relative">
+    <section id="features" className="py-20 px-6 relative">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">
-            Why You&apos;ll
+            Powerful
             <span className="bg-gradient-to-r from-text-from to-text-to bg-clip-text text-transparent">
               {" "}
-              Love It
+              Features
             </span>
           </h2>
           <p className="text-xl text-text-primary/70 max-w-3xl mx-auto">
-            We&apos;re building more than just a product – we&apos;re creating
-            an experience that will transform how you work and play.
+            Everything you need to modernize your restaurant operations and
+            provide a seamless ordering experience.
           </p>
         </div>
 

@@ -57,7 +57,7 @@ export function ContactForm() {
   };
 
   return (
-    <section className="py-20 px-6 relative">
+    <section id="contact" className="py-20 px-6 relative">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">
@@ -216,7 +216,7 @@ export function ContactForm() {
                     Joining the list...
                   </div>
                 ) : (
-                  "Get Early Access 🚀"
+                  "Get access now! 🚀"
                 )}
               </button>
             </form>
