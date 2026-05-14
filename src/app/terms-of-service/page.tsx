@@ -173,10 +173,10 @@ export default function TermsOfService() {
             <p className="mb-4">For legal or support inquiries:</p>
             <div className="bg-bg-dark p-4 rounded-xl border border-gray-200 inline-block">
               <a
-                href="mailto:support@hungryv.com"
+                href="mailto:reach@raiboinfotech.com"
                 className="text-gradient-from font-medium hover:underline"
               >
-                support@hungryv.com
+                reach@raiboinfotech.com
               </a>
             </div>
           </section>
