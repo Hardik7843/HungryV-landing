@@ -54,16 +54,6 @@ export function Footer() {
                   How it Works
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="https://client.hungryv.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-text-secondary hover:text-text-from transition-colors text-sm"
-                >
-                  Live Demo
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -111,9 +101,9 @@ export function Footer() {
               <li>
                 <Link
                   href="/#book-demo"
-                  className="text-text-secondary hover:text-text-from transition-colors text-sm font-semibold"
+                  className="text-text-secondary hover:text-text-from transition-colors text-sm"
                 >
-                  📅 Book a Demo
+                  Schedule a demo
                 </Link>
               </li>
               <li>

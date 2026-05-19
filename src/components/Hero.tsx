@@ -1,12 +1,7 @@
-"use client";
-
-import { useState } from "react";
 import { Sparkles } from "lucide-react";
-import { DemoFormPopup } from "@/components/DemoFormPopup";
+import Link from "next/link";
 
 export function Hero() {
-  const [showDemoPopup, setShowDemoPopup] = useState(false);
-
   return (
     <>
       {/* Navbar */}
@@ -14,13 +9,13 @@ export function Hero() {
         <span className="text-text-primary font-bold text-lg tracking-tight">
           Hungry V
         </span>
-        <button
-          onClick={() => setShowDemoPopup(true)}
+        <Link
+          href={"/#book-demo"}
           className="flex items-center gap-1.5 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-white shadow-lg hover:from-purple-700 hover:to-cyan-600 hover:scale-105 transition-all"
         >
           <Sparkles className="h-3.5 w-3.5" />
           Book Free Demo
-        </button>
+        </Link>
       </nav>
 
       <section
@@ -55,8 +50,8 @@ export function Hero() {
               </p>
               <p>
                 Customers can scan QR codes placed on tables to browse menus,
-                place food orders, and receive real-time updates without
-                waiting for manual order taking.
+                place food orders, and receive real-time updates without waiting
+                for manual order taking.
               </p>
               <p>
                 Restaurant staff members can efficiently manage incoming orders,
@@ -66,13 +61,13 @@ export function Hero() {
             </div>
 
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-              <button
-                onClick={() => setShowDemoPopup(true)}
+              <Link
+                href={"/#book-demo"}
                 className="flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-semibold text-lg hover:from-purple-700 hover:to-cyan-600 hover:scale-105 transition-all shadow-lg w-full sm:w-auto"
               >
                 <Sparkles className="h-5 w-5" />
                 Book Free Demo
-              </button>
+              </Link>
 
               <a
                 href="#contact"
@@ -122,11 +117,6 @@ export function Hero() {
           </div>
         </div>
       </section>
-
-      <DemoFormPopup
-        isOpen={showDemoPopup}
-        onClose={() => setShowDemoPopup(false)}
-      />
     </>
   );
 }

@@ -18,10 +18,22 @@ import {
 type DemoFormData = z.infer<typeof demoFormSchema>;
 
 const TIME_SLOTS = [
-  "09:00", "09:30", "10:00", "10:30",
-  "11:00", "11:30", "12:00", "12:30",
-  "14:00", "14:30", "15:00", "15:30",
-  "16:00", "16:30", "17:00", "17:30",
+  "09:00",
+  "09:30",
+  "10:00",
+  "10:30",
+  "11:00",
+  "11:30",
+  "12:00",
+  "12:30",
+  "14:00",
+  "14:30",
+  "15:00",
+  "15:30",
+  "16:00",
+  "16:30",
+  "17:00",
+  "17:30",
 ];
 
 const BENEFITS = [
@@ -78,10 +90,6 @@ export function BookDemoSection() {
 
       <div className="relative max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-2 text-sm font-semibold text-purple-600 mb-4">
-            <Sparkles className="h-4 w-4" />
-            Free Demo — Limited Slots
-          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
             See Hungry V in{" "}
             <span className="bg-gradient-to-r from-text-from to-text-to bg-clip-text text-transparent">
@@ -111,21 +119,6 @@ export function BookDemoSection() {
                   </li>
                 ))}
               </ul>
-            </div>
-
-            <div className="rounded-2xl border border-white/20 bg-gradient-to-br from-purple-600/20 to-cyan-500/20 backdrop-blur-sm p-6">
-              <div className="flex items-center gap-3 mb-3">
-                <Clock className="h-5 w-5 text-purple-500" />
-                <span className="font-semibold text-text-primary">
-                  Available Slots
-                </span>
-              </div>
-              <p className="text-sm text-text-primary/70">
-                Mon–Sat · 9 AM to 6 PM IST
-              </p>
-              <p className="text-sm text-text-primary/70 mt-1">
-                Response within 2 business hours
-              </p>
             </div>
           </div>
 
