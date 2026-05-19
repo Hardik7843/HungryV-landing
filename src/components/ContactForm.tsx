@@ -5,20 +5,11 @@ import { useState } from "react";
 import { LoaderCircle } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactFormSchema } from "@/validator/contact.validator";
+import z from "zod";
+import { axiosInstance } from "@/lib/axiosInstance";
+import toast from "react-hot-toast";
 
-interface FormData {
-  name: string;
-  website?: string;
-  instagram: string;
-  phone: string;
-}
-
-// interface FormErrors {
-//   name?: string;
-//   website?: string;
-//   instagram?: string;
-//   phone?: string;
-// }
+type FormData = z.infer<typeof contactFormSchema>;
 
 export function ContactForm() {
   const {
@@ -29,30 +20,29 @@ export function ContactForm() {
   } = useForm<FormData>({
     resolver: zodResolver(contactFormSchema),
   });
-  // const [errors, setErrors] = useState<FormErrors>({});
-  // const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [isSuccess, setIsSuccess] = useState(false);
 
   const onSubmit = async (data: FormData) => {
     try {
-      // setIsSubmitting(true);
+      const response = await axiosInstance.post("/enquiry", {
+        ...data,
+        comments: data.query,
+        type: "GENERAL",
+      });
 
-      // Clear previous errors
-      // setErrors({});
+      if (response.status == 201) {
+        setIsSuccess(true);
+        reset();
+        setTimeout(() => {
+          setIsSuccess(false);
+        }, 2000);
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-
-      console.log("Form submitted:", data);
-      setIsSuccess(true);
-      reset();
-
-      // Reset success message after 3 seconds
-      setTimeout(() => setIsSuccess(false), 3000);
-      // setIsSubmitting(false);
+        toast.success("We got your message, We'll be in touch soon");
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
+      toast.error("Failed to send message");
     }
   };
 
@@ -61,10 +51,10 @@ export function ContactForm() {
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">
-            Get
+            Contact
             <span className="bg-gradient-to-r from-text-from to-text-to bg-clip-text text-transparent">
               {" "}
-              Early Access
+              Us
             </span>
           </h2>
           <p className="text-xl text-text-primary/70">
@@ -119,59 +109,24 @@ export function ContactForm() {
                 )}
               </div>
 
-              {/* Website Field */}
+              {/* Email Field */}
               <div>
                 <label
-                  htmlFor="website"
+                  htmlFor="email"
                   className="block text-sm font-medium text-black/80 mb-2"
                 >
-                  Website <span className="text-black/50">(optional)</span>
+                  Email Address *
                 </label>
                 <input
-                  {...register("website")}
-                  type="text"
-                  id="website"
+                  {...register("email")}
+                  type="email"
+                  id="email"
                   className="w-full px-4 py-3 bg-white/50 border border-white/20 rounded-lg text-black placeholder-black/50 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400/20 transition-all duration-200"
-                  placeholder="https://www.youtube.com/@RaiboInfotech"
+                  placeholder="contact@raiboinfotech.com"
                 />
-                {errors.website && (
+                {errors.email && (
                   <p className="mt-2 text-sm text-red-400">
-                    {errors.website.message}
-                  </p>
-                )}
-              </div>
-
-              {/* Instagram Field */}
-              <div>
-                <label
-                  htmlFor="instagram"
-                  className="block text-sm font-medium text-black/80 mb-2"
-                >
-                  Instagram Handle *
-                </label>
-                <input
-                  {...register("instagram")}
-                  type="text"
-                  id="instagram"
-                  className="w-full px-4 py-3 bg-white/50 border border-white/20 rounded-lg text-black placeholder-black/50 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400/20 transition-all duration-200"
-                  placeholder="https://instagram.com/raiboinfotech"
-                />
-                {/* <div className="relative"> */}
-                {/* <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-black/50">
-                    @
-                  </span> */}
-
-                {/* <input
-                  {...register("instagram")}
-                  type="text"
-                  id="instagram"
-                  className="w-full pl-8 pr-4 py-3 bg-white/50 border border-white/20 rounded-lg text-black placeholder-black/50 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400/20 transition-all duration-200"
-                  placeholder="yourbusiness"
-                /> */}
-                {/* </div> */}
-                {errors.instagram && (
-                  <p className="mt-2 text-sm text-red-400">
-                    {errors.instagram.message}
+                    {errors.email.message}
                   </p>
                 )}
               </div>
@@ -198,6 +153,94 @@ export function ContactForm() {
                 )}
               </div>
 
+              {/* State and City */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    htmlFor="state"
+                    className="block text-sm font-medium text-black/80 mb-2"
+                  >
+                    State *
+                  </label>
+                  <input
+                    {...register("state")}
+                    type="text"
+                    id="state"
+                    className="w-full px-4 py-3 bg-white/50 border border-white/20 rounded-lg text-black placeholder-black/50 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400/20 transition-all duration-200"
+                    placeholder="Maharashtra"
+                  />
+                  {errors.state && (
+                    <p className="mt-2 text-sm text-red-400">
+                      {errors.state.message}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <label
+                    htmlFor="city"
+                    className="block text-sm font-medium text-black/80 mb-2"
+                  >
+                    City *
+                  </label>
+                  <input
+                    {...register("city")}
+                    type="text"
+                    id="city"
+                    className="w-full px-4 py-3 bg-white/50 border border-white/20 rounded-lg text-black placeholder-black/50 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400/20 transition-all duration-200"
+                    placeholder="Mumbai"
+                  />
+                  {errors.city && (
+                    <p className="mt-2 text-sm text-red-400">
+                      {errors.city.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/* Query Text Box */}
+              <div>
+                <label
+                  htmlFor="query"
+                  className="block text-sm font-medium text-black/80 mb-2"
+                >
+                  Query *
+                </label>
+                <textarea
+                  {...register("query")}
+                  id="query"
+                  className="w-full px-4 py-3 bg-white/50 border border-white/20 rounded-lg text-black placeholder-black/50 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400/20 transition-all duration-200"
+                  placeholder="Tell us about your business"
+                  rows={4}
+                />
+                {errors.query && (
+                  <p className="mt-2 text-sm text-red-400">
+                    {errors.query.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Website Field */}
+              <div>
+                <label
+                  htmlFor="website"
+                  className="block text-sm font-medium text-black/80 mb-2"
+                >
+                  Website <span className="text-black/50">(optional)</span>
+                </label>
+                <input
+                  {...register("website")}
+                  type="text"
+                  id="website"
+                  className="w-full px-4 py-3 bg-white/50 border border-white/20 rounded-lg text-black placeholder-black/50 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400/20 transition-all duration-200"
+                  placeholder="https://www.youtube.com/@RaiboInfotech"
+                />
+                {errors.website && (
+                  <p className="mt-2 text-sm text-red-400">
+                    {errors.website.message}
+                  </p>
+                )}
+              </div>
+
               {/* Submit Button */}
               <button
                 type="submit"
@@ -213,10 +256,10 @@ export function ContactForm() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg> */}
-                    Joining the list...
+                    Sending...
                   </div>
                 ) : (
-                  "Get access now! 🚀"
+                  "Get in touch with us"
                 )}
               </button>
             </form>
