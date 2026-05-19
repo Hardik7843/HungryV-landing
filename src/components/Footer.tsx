@@ -24,6 +24,7 @@ export function Footer() {
               Smart Restaurant Ordering & Management Platform
             </p>
           </div>
+
           <div>
             <h3 className="text-text-primary font-semibold mb-4">
               Quick Links
@@ -60,11 +61,12 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="text-text-secondary hover:text-text-from transition-colors text-sm"
                 >
-                  Demo
+                  Live Demo
                 </Link>
               </li>
             </ul>
           </div>
+
           <div>
             <h3 className="text-text-primary font-semibold mb-4">Legal</h3>
             <ul className="space-y-2">
@@ -94,16 +96,24 @@ export function Footer() {
               </li>
             </ul>
           </div>
+
           <div>
             <h3 className="text-text-primary font-semibold mb-4">Contact</h3>
-
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/#contact"
                   className="text-text-secondary hover:text-text-from transition-colors text-sm"
                 >
-                  Contact
+                  General Enquiry
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#book-demo"
+                  className="text-text-secondary hover:text-text-from transition-colors text-sm font-semibold"
+                >
+                  📅 Book a Demo
                 </Link>
               </li>
               <li>
@@ -117,6 +127,7 @@ export function Footer() {
             </ul>
           </div>
         </div>
+
         <div className="border-t border-white/10 pt-8 flex flex-col items-center">
           <div className="text-text-secondary text-sm font-medium">
             &copy; {new Date().getFullYear()} Hungry V. All rights reserved.

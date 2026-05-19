@@ -1,9 +1,11 @@
-import { ContactForm } from '@/components/ContactForm'
-import { FeatureSection } from '@/components/FeatureSection'
-import { Hero } from '@/components/Hero'
-import { HowItWorks } from '@/components/HowItWorks'
-import { About } from '@/components/About'
-import { SecuritySection } from '@/components/SecuritySection'
+import { ContactForm } from "@/components/ContactForm";
+import { FeatureSection } from "@/components/FeatureSection";
+import { Hero } from "@/components/Hero";
+import { HowItWorks } from "@/components/HowItWorks";
+import { About } from "@/components/About";
+import { SecuritySection } from "@/components/SecuritySection";
+import { BookDemoSection } from "@/components/BookDemoSection";
+import { AutoDemoPopup } from "@/components/AutoDemoPopup";
 
 export default function Home() {
   return (
@@ -13,7 +15,9 @@ export default function Home() {
       <HowItWorks />
       <About />
       <SecuritySection />
+      <BookDemoSection />
       <ContactForm />
+      <AutoDemoPopup />
     </div>
-  )
+  );
 }
