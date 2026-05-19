@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { DemoFormPopup } from "@/components/DemoFormPopup";
 
 export function AutoDemoPopup() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {

@@ -115,15 +115,15 @@ export function DemoFormPopup({ isOpen, onClose }: DemoFormPopupProps) {
             {/* CTA — matches ContactForm button exactly */}
             <button
               onClick={handleBookDemo}
-              className="group w-full py-4 px-6 bg-gradient-to-r from-gradient-from to-gradient-to hover:from-purple-700 hover:to-cyan-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-purple-400/20 flex items-center justify-center gap-2"
+              className="group w-full py-4 px-6 bg-gradient-to-r from-gradient-from to-gradient-to hover:from-purple-700 hover:to-cyan-700 text-white font-semibold rounded-lg hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-purple-400/20 flex items-center justify-center gap-2"
             >
               Book My Free Demo
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1" />
             </button>
 
             <button
               onClick={onClose}
-              className="mt-3 w-full py-2 text-xs text-text-primary/40 hover:text-text-primary/60 transition-colors"
+              className="mt-3 w-full py-2 text-xs text-text-primary/40 hover:text-text-primary/60"
             >
               Maybe later
             </button>
