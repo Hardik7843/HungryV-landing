@@ -11,7 +11,7 @@ export function Hero() {
         </span>
         <Link
           href={"/#book-demo"}
-          className="flex items-center gap-1.5 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-white shadow-lg hover:from-purple-700 hover:to-cyan-600 hover:scale-105 transition-all"
+          className="flex items-center gap-1.5 rounded-full bg-gradient-to-r from-gradient-from to-gradient-to hover:from-purple-700 hover:to-cyan-700 px-4 py-2 text-sm font-semibold text-white shadow-lg hover:scale-105 transition-all duration-200"
         >
           <Sparkles className="h-3.5 w-3.5" />
           Book Free Demo
@@ -63,7 +63,7 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
               <Link
                 href={"/#book-demo"}
-                className="flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-semibold text-lg hover:from-purple-700 hover:to-cyan-600 hover:scale-105 transition-all shadow-lg w-full sm:w-auto"
+                className="flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-gradient-from to-gradient-to hover:from-purple-700 hover:to-cyan-700 text-white font-semibold text-lg hover:scale-105 transition-all duration-200 shadow-lg w-full sm:w-auto"
               >
                 <Sparkles className="h-5 w-5" />
                 Book Free Demo

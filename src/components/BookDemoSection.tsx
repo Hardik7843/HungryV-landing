@@ -124,7 +124,7 @@ export function BookDemoSection() {
 
           {/* Right — Form */}
           <div className="relative">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-2xl blur opacity-30" />
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-gradient-from to-gradient-to rounded-2xl blur opacity-30" />
             <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               {isSuccess ? (
                 <div className="py-12 text-center">
@@ -300,7 +300,7 @@ export function BookDemoSection() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full rounded-xl bg-gradient-to-r from-purple-600 to-cyan-500 py-3 px-6 text-sm font-semibold text-white shadow-lg hover:from-purple-700 hover:to-cyan-600 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-60 disabled:transform-none flex items-center justify-center gap-2"
+                    className="w-full py-4 px-6 bg-gradient-to-r from-gradient-from to-gradient-to hover:from-purple-700 hover:to-cyan-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-purple-400/20 disabled:opacity-50 disabled:transform-none flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? (
                       <>
