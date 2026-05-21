@@ -89,7 +89,6 @@ export function BookDemoSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          {/* Left — Benefits */}
           <div className="space-y-6">
             <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-sm p-6">
               <h3 className="text-lg font-bold text-text-primary mb-4">
@@ -108,11 +107,11 @@ export function BookDemoSection() {
             </div>
           </div>
 
-          {/* Right — Form */}
           <div className="relative">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-gradient-from to-gradient-to rounded-2xl blur opacity-30" />
             <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
               {isSuccess ? (
+                /* SUCCESS STATE — "Schedule another demo" REMOVED */
                 <div className="py-12 text-center">
                   <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
                     <CheckCircle2 className="h-8 w-8 text-green-500" />
@@ -121,14 +120,9 @@ export function BookDemoSection() {
                     Demo Scheduled!
                   </h3>
                   <p className="mt-2 text-sm text-gray-600">
-                    Our team will reach out within 2 hours to confirm your slot.
+                    Our team will reach out within 2 hours to confirm your
+                    slot.
                   </p>
-                  <button
-                    onClick={() => setIsSuccess(false)}
-                    className="mt-4 text-sm text-purple-600 underline"
-                  >
-                    Schedule another demo
-                  </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -255,7 +249,9 @@ export function BookDemoSection() {
                         render={({ field }) => (
                           <DatePicker
                             value={
-                              field.value ? new Date(field.value) : undefined
+                              field.value
+                                ? new Date(field.value)
+                                : undefined
                             }
                             onChange={(date: Date | undefined) =>
                               field.onChange(
@@ -295,7 +291,6 @@ export function BookDemoSection() {
                     </div>
                   </div>
 
-                  {/* Comments */}
                   <div>
                     <label className="block text-xs font-semibold text-gray-700 mb-1">
                       Additional Notes{" "}
