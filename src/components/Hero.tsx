@@ -1,16 +1,29 @@
 import { Sparkles } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export function Hero() {
   return (
     <>
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-white/80 backdrop-blur-lg border-b border-gray-200 shadow-sm">
-        <span className="text-text-primary font-bold text-lg tracking-tight">
-          Hungry V
-        </span>
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3 bg-white/80 backdrop-blur-lg border-b border-gray-200 shadow-sm">
+        {/* Logo + Brand */}
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/logo.png"
+            alt="Hungry V Logo"
+            width={36}
+            height={36}
+            className="object-contain"
+            priority
+          />
+          <span className="text-text-primary font-bold text-lg tracking-tight">
+            Hungry V
+          </span>
+        </Link>
+
         <Link
-          href={"/#book-demo"}
+          href="/#book-demo"
           className="flex items-center gap-1.5 rounded-full bg-gradient-to-r from-gradient-from to-gradient-to hover:from-purple-700 hover:to-cyan-700 px-4 py-2 text-sm font-semibold text-white shadow-lg hover:scale-105 transition-all duration-200"
         >
           <Sparkles className="h-3.5 w-3.5" />

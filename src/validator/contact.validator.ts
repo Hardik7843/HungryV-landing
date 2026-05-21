@@ -43,7 +43,15 @@ export const demoFormSchema = z.object({
     .trim()
     .min(2, "State is required")
     .max(80, "State is too long"),
+  address: z
+    .string()
+    .trim()
+    .min(5, "Please provide a proper address")
+    .max(255, "Address is too long"),
   comments: z.string().trim().optional().or(z.literal("")),
   scheduledDate: z.string().min(1, "Please select a date"),
-  scheduledTime: z.string().min(1, "Please select a time"),
+  scheduledTime: z
+    .string()
+    .trim()
+    .min(2, "Please enter a preferred time"),
 });

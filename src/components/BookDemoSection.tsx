@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { demoFormSchema } from "@/validator/contact.validator";
 import z from "zod";
@@ -9,32 +9,16 @@ import { axiosInstance } from "@/lib/axiosInstance";
 import toast from "react-hot-toast";
 import {
   Sparkles,
-  Calendar,
+  Calendar as CalendarIcon,
   Clock,
   CheckCircle2,
   LoaderCircle,
+  MapPin,
 } from "lucide-react";
+import { DatePicker } from "@/components/ui/date-picker";
+import { format } from "date-fns";
 
 type DemoFormData = z.infer<typeof demoFormSchema>;
-
-const TIME_SLOTS = [
-  "09:00",
-  "09:30",
-  "10:00",
-  "10:30",
-  "11:00",
-  "11:30",
-  "12:00",
-  "12:30",
-  "14:00",
-  "14:30",
-  "15:00",
-  "15:30",
-  "16:00",
-  "16:30",
-  "17:00",
-  "17:30",
-];
 
 const BENEFITS = [
   "30-minute personalized walkthrough",
@@ -52,6 +36,7 @@ export function BookDemoSection() {
     register,
     handleSubmit,
     reset,
+    control,
     formState: { isSubmitting, errors },
   } = useForm<DemoFormData>({
     resolver: zodResolver(demoFormSchema),
@@ -66,6 +51,7 @@ export function BookDemoSection() {
         phone: data.phone,
         city: data.city,
         state: data.state,
+        address: data.address,
         comments: data.comments || undefined,
         scheduledDate: data.scheduledDate,
         scheduledTime: data.scheduledTime,
@@ -132,7 +118,7 @@ export function BookDemoSection() {
                     <CheckCircle2 className="h-8 w-8 text-green-500" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900">
-                    Demo Scheduled! 🎉
+                    Demo Scheduled!
                   </h3>
                   <p className="mt-2 text-sm text-gray-600">
                     Our team will reach out within 2 hours to confirm your slot.
@@ -203,6 +189,24 @@ export function BookDemoSection() {
                     )}
                   </div>
 
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-700 mb-1">
+                      <MapPin className="inline h-3.5 w-3.5 mr-1" />
+                      Address *
+                    </label>
+                    <input
+                      {...register("address")}
+                      type="text"
+                      placeholder="Shop No, Street, Area"
+                      className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400/20 transition-all"
+                    />
+                    {errors.address && (
+                      <p className="mt-1 text-xs text-red-500">
+                        {errors.address.message}
+                      </p>
+                    )}
+                  </div>
+
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-semibold text-gray-700 mb-1">
@@ -242,14 +246,28 @@ export function BookDemoSection() {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-semibold text-gray-700 mb-1">
-                        <Calendar className="inline h-3.5 w-3.5 mr-1" />
+                        <CalendarIcon className="inline h-3.5 w-3.5 mr-1" />
                         Preferred Date *
                       </label>
-                      <input
-                        {...register("scheduledDate")}
-                        type="date"
-                        min={new Date().toISOString().split("T")[0]}
-                        className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400/20 transition-all"
+                      <Controller
+                        control={control}
+                        name="scheduledDate"
+                        render={({ field }) => (
+                          <DatePicker
+                            value={
+                              field.value ? new Date(field.value) : undefined
+                            }
+                            onChange={(date: Date | undefined) =>
+                              field.onChange(
+                                date ? format(date, "yyyy-MM-dd") : "",
+                              )
+                            }
+                            minDate={
+                              new Date(new Date().setHours(0, 0, 0, 0))
+                            }
+                            placeholder="Select date"
+                          />
+                        )}
                       />
                       {errors.scheduledDate && (
                         <p className="mt-1 text-xs text-red-500">
@@ -263,17 +281,12 @@ export function BookDemoSection() {
                         <Clock className="inline h-3.5 w-3.5 mr-1" />
                         Preferred Time *
                       </label>
-                      <select
+                      <input
                         {...register("scheduledTime")}
-                        className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400/20 transition-all"
-                      >
-                        <option value="">Select time</option>
-                        {TIME_SLOTS.map((t) => (
-                          <option key={t} value={t}>
-                            {t}
-                          </option>
-                        ))}
-                      </select>
+                        type="text"
+                        placeholder="e.g., 10:30 AM"
+                        className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400/20 transition-all"
+                      />
                       {errors.scheduledTime && (
                         <p className="mt-1 text-xs text-red-500">
                           {errors.scheduledTime.message}
@@ -282,6 +295,7 @@ export function BookDemoSection() {
                     </div>
                   </div>
 
+                  {/* Comments */}
                   <div>
                     <label className="block text-xs font-semibold text-gray-700 mb-1">
                       Additional Notes{" "}
